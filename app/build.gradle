@@ -12,6 +12,7 @@ android {
         applicationId "app.info.twitchapp"
         minSdkVersion min_sdk_version
         targetSdkVersion sdk_version
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -31,9 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-}
+
+    allprojects {
+        repositories {
+            google()
+            maven { url "https://jitpack.io" }
+            jcenter()
+        }
+    }
+    }
 
 dependencies {
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
@@ -46,9 +56,13 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:$rxjava_version"
     implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
     implementation "com.rengwuxian.materialedittext:library:$material_edt_text"
-    implementation "com.github.badoualy:stepper-indicator:$step_indicator_version"
     implementation "com.afollestad.material-dialogs:files:$material_dialogs"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation 'com.lapism:search:2.4.1@aar'
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 
 
     testImplementation 'junit:junit:4.+'
